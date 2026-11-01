@@ -2414,7 +2414,7 @@ def rec_merge(target: dict[str, Any], *sources: dict[str, Any]) -> dict[str, Any
 def load_yaml_or_die(file_path: str, stream: Any) -> dict[str, Any]:
     try:
         return yaml.safe_load(stream)
-    except yaml.scanner.ScannerError as e:
+    except yaml.YAMLError as e:
         log.fatal("Compose file contains an error:\n%s", e)
         log.info("Compose file %s contains an error:", file_path, exc_info=e)
         sys.exit(1)
